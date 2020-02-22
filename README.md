@@ -48,3 +48,14 @@ socket是Unix/linux下的一种特殊文件，用于网络中的进程通信，s
 - 需要包含头文件< unistd >
 - socket调用close后，会把该socket标记为关闭，然后立即返回到调用进程。
 
+# 2.22 第一版聊天室开发完成
+第一版可以实现简单的服务器与客户端通信，具体效果如下：
+server:
+![Image test]( https://github.com/SalvationN/SimpleChatRoom/images/server v1.png )
+client:
+![Image test]( https://github.com/SalvationN/SimpleChatRoom/images/client v1.png )
+## 排坑调试
+由于一些细微的括号处理问题，导致出现Segmentation fault (core dumped)错误，core dumped是核心转储。进程异常终止，进程用户空间的数据就会被写到磁盘。但是linux下一般不会产生core文件，因此需要用到gbt调试。  
+- ulimit -c 1024修改corefilesize，然后再次运行程序
+- 这时出现core.xxx文件
+- 然后用gbt ./client core.xxx即可得到错误代码的原因和出错地方
