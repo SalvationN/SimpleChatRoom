@@ -87,3 +87,5 @@ linger可以改变面向连接的socket的close操作——即向对方挥手，
 打开该功能后，经过三次握手，新的socket状态依然是SYN_RECV，而不会进入ESTABLISHED，如果经过val时间，仍然没有数据发送，服务器会重传SYN_ACK报文，若重传达到重传次数，该连接将被丢弃
 5. SO_KEEPALIVE —— 检测对方主机是否崩溃  
 6. SO_SNDTIMEO/SO_RECVTIMEO —— 设置socket发送和接收超时时间
+7. SO_RCVBUF/SO_SNDBUF —— 发送和接收缓存  
+
